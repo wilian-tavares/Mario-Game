@@ -4,7 +4,7 @@ const clouds = document.querySelector('.clouds');
 let points = document.querySelector('.points');
 
 let score = 0;
-
+let listScore = [];
 
 const jump = () => {
     mario.classList.add('jump');
@@ -36,24 +36,42 @@ const loop = setInterval(() => {
 
         clouds.style.left = `${cloudsPosition}px`;
 
+        //alert(`Seu score foi: ${score}`)
+
+        const name = prompt('Your Name: ')
+
+        listScore.push(name, score);
+
+
+
 
         clearInterval(loop);
         clearInterval(scoreRecords);
+        //console.log(listScore)
+
+        const listComplete = localStorage.setItem(name, score);
+        const teste = localstorage.getItem(name)
+        console.log(teste)
+
     }
 
+
 }, 10);
+
 
 
 /*POINTS RECORDS*/
 const scoreRecords = setInterval(() => {
     score += 1;
     points.innerText = `Score: ${score} Seconds`
-    console.log(`points = ${score} `)
+
 
 }, 1000);
 
-
-
-
 document.addEventListener('keydown', jump);
+
+
+//console.log('teste ' + listScore)
+
+
 
