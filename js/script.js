@@ -1,7 +1,12 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const clouds = document.querySelector('.clouds');
+
+const buttonInit = document.querySelector('.buttonInit');
+const buttomBack = document.querySelector('.buttom-back');
+
 let points = document.querySelector('.points');
+
 
 let score = 0;
 let listScore = [];
@@ -16,12 +21,12 @@ const jump = () => {
 
 }
 
-const loop = setInterval(() => {
 
+
+const loop = setInterval(() => {
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
     const cloudsPosition = clouds.offsetLeft;
-
 
     if (pipePosition <= 120 && pipePosition > 0 && marioPosition < 120) {
         pipe.style.animation = 'none';
@@ -36,27 +41,23 @@ const loop = setInterval(() => {
 
         clouds.style.left = `${cloudsPosition}px`;
 
-        //alert(`Seu score foi: ${score}`)
-
         const name = prompt('Your Name: ')
 
         listScore.push(name, score);
 
-
-
-
         clearInterval(loop);
         clearInterval(scoreRecords);
-        //console.log(listScore)
+
+        buttomBack.style.visibility = 'visible';
 
         const listComplete = localStorage.setItem(name, score);
         const teste = localstorage.getItem(name)
         console.log(teste)
-
+        load
     }
-
-
 }, 10);
+
+
 
 
 
@@ -70,8 +71,12 @@ const scoreRecords = setInterval(() => {
 
 document.addEventListener('keydown', jump);
 
+function initall() {
 
-//console.log('teste ' + listScore)
+}
+//alert(buttonInit.addEventListener)
+//buttonInit.addEventListener('click', loop);
+
 
 
 
