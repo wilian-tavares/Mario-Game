@@ -1,15 +1,15 @@
+//export { listScore };
+
+
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const clouds = document.querySelector('.clouds');
 
 const buttonInit = document.querySelector('.buttonInit');
 const buttomBack = document.querySelector('.buttom-back');
-
-let points = document.querySelector('.points');
-
-
+const points = document.querySelector('.points');
 let score = 0;
-let listScore = [];
+
 
 const jump = () => {
     mario.classList.add('jump');
@@ -20,7 +20,6 @@ const jump = () => {
     }, 500)
 
 }
-
 
 
 const loop = setInterval(() => {
@@ -43,19 +42,77 @@ const loop = setInterval(() => {
 
         const name = prompt('Your Name: ')
 
-        listScore.push(name, score);
-
         clearInterval(loop);
         clearInterval(scoreRecords);
 
         buttomBack.style.visibility = 'visible';
 
-        const listComplete = localStorage.setItem(name, score);
-        const teste = localstorage.getItem(name)
-        console.log(teste)
-        load
+        storage(name, score)
+
     }
 }, 10);
+
+
+
+
+// SAVE SCORE IN LOCAL STORAGE
+function storage(name, score) {
+    let listScore = localStorage['listScore'] ? JSON.parse(localStorage['listScore']) : [];
+
+    listScore.push({
+        name,
+        score
+    });
+
+
+    let x = localStorage.getItem('listScore');
+    localStorage.setItem('listScore', JSON.stringify(listScore));
+
+    listScore.sort(function (a, b) {
+        if (a.score > b.score) {
+            return -1;
+        }
+        else if (a.score < b.score) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    });
+
+    console.log(listScore);
+
+} // fim da function STORAGE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function teste(a, b) {
+    if (a.score > b.score) {
+        return 1;
+    }
+    else if (a.score < b.score) {
+        return -1;
+    }
+    else {
+        return 0;
+    }
+}
+
+
+
+
 
 
 
@@ -71,11 +128,6 @@ const scoreRecords = setInterval(() => {
 
 document.addEventListener('keydown', jump);
 
-function initall() {
-
-}
-//alert(buttonInit.addEventListener)
-//buttonInit.addEventListener('click', loop);
 
 
 
