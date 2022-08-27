@@ -1,4 +1,4 @@
-//export { listScore };
+export default listScore;
 
 
 const mario = document.querySelector('.mario');
@@ -8,8 +8,8 @@ const clouds = document.querySelector('.clouds');
 const buttonInit = document.querySelector('.buttonInit');
 const buttomBack = document.querySelector('.buttom-back');
 const points = document.querySelector('.points');
-let score = 0;
 
+let score = 0;
 
 const jump = () => {
     mario.classList.add('jump');
@@ -48,11 +48,8 @@ const loop = setInterval(() => {
         buttomBack.style.visibility = 'visible';
 
         storage(name, score)
-
     }
 }, 10);
-
-
 
 
 // SAVE SCORE IN LOCAL STORAGE
@@ -63,7 +60,6 @@ function storage(name, score) {
         name,
         score
     });
-
 
     let x = localStorage.getItem('listScore');
     localStorage.setItem('listScore', JSON.stringify(listScore));
@@ -79,22 +75,9 @@ function storage(name, score) {
             return 0;
         }
     });
-
     console.log(listScore);
 
 } // fim da function STORAGE
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -110,14 +93,6 @@ function teste(a, b) {
     }
 }
 
-
-
-
-
-
-
-
-
 /*POINTS RECORDS*/
 const scoreRecords = setInterval(() => {
     score += 1;
@@ -125,8 +100,8 @@ const scoreRecords = setInterval(() => {
 
 
 }, 1000);
-
 document.addEventListener('keydown', jump);
+
 
 
 

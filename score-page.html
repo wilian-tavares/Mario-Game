@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Jump Score-Page</title>
-    <link rel="stylesheet" href="css/style-shield-page.css">
+    <link rel="stylesheet" href="css/style-score-page.css">
+    <script type="module" src="js/score-page.js" defer></script>
 
 
 </head>
@@ -17,23 +18,20 @@
 
 
         <!-- <a href="index.html">
-            <button class="buttonInit"> INICIAR
-            </button>
-        </a> -->
-        <div class="shield-score">
-            pontos
+                            <button class="buttonInit"> INICIAR
+                            </button>
+                        </a> -->
+        <div class="shield-score" id="shield-score">
+            <div>
+                PONTOS
+            </div>
+            <div>
+                <ul id="listComplet"></ul>
+            </div>
         </div>
-
     </div>
 
-    <script type="module">
-        // import listScore from '../js/script.js';
 
-        // console.log(listScore);
-
-        //const buttonInit = document.querySelector('.buttonInit')
-        //buttonInit.addEventListener('click', load('#index'))
-    </script>
 </body>
 
 </html>
